@@ -13,6 +13,9 @@ const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.makeUrl('/')],
   config: {
     screens: {
+      FirstScreen: "FirstScreen",
+      Congratulations: "Congratulations",
+
       Root: {
         screens: {
           Login: {
@@ -29,6 +32,7 @@ const linking: LinkingOptions<RootStackParamList> = {
       },
       Modal: 'modal',
       NotFound: '*',
+
     },
   },
 };

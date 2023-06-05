@@ -14,6 +14,18 @@ declare global {
 }
 
 export type RootStackParamList = {
+  FirstScreen: undefined;
+  ChooseProfile: undefined;
+  ChooseUsername: undefined;
+  ConnectSocialsAndVrify: undefined;
+  ConnectSocials: undefined;
+  FindFriends: undefined;
+  ExploreCommunities: undefined;
+  Congratulations: undefined;
+  ChooseProfilePics: undefined;
+
+  EmailLogin: undefined;
+
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
   Modal: undefined;
   NotFound: undefined;

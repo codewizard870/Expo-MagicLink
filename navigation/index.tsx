@@ -18,14 +18,15 @@ import Web3Screen from '../screens/Web3Screen';
 import { RootStackParamList, RootTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import HeaderDropdown from "./HeaderDropdown";
-import FirstScreen from '../screens/FirstScreen';
+import FirstScreen from '../src/screens/FirstScreen';
+import Congratulations from '../src/screens/Congratulations';
 
-export default function Navigation({ colorScheme, magicProps }: { colorScheme: ColorSchemeName, magicProps: any  }) {
+export default function Navigation({ colorScheme, magicProps }: { colorScheme: ColorSchemeName, magicProps: any }) {
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <RootNavigator magicProps={magicProps}/>
+      <RootNavigator magicProps={magicProps} />
     </NavigationContainer>
   );
 }
@@ -39,9 +40,14 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator({ magicProps }: any) {
   return (
     <Stack.Navigator>
-        <Stack.Screen name="Root" options={{ headerShown: false }} >
-            {() => BottomTabNavigator(magicProps)}
-        </Stack.Screen>
+      <Stack.Screen name="FirstScreen" options={{ headerShown: false }} >
+        {() => <FirstScreen {...magicProps} />}
+      </Stack.Screen>
+      <Stack.Screen name="Congratulations" component={Congratulations}  options={{ headerShown: false }}/>
+
+      <Stack.Screen name="Root" options={{ headerShown: false }} >
+        {() => BottomTabNavigator(magicProps)}
+      </Stack.Screen>
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );
@@ -56,12 +62,12 @@ const BottomTab = createBottomTabNavigator<RootTabParamList>();
 function BottomTabNavigator(props: { navigation?: any; env?: any; setEnv?: any; magic?: any; web3?: any; }) {
   const colorScheme = useColorScheme();
 
-    const { env, setEnv, magic, web3 } = props;
+  const { env, setEnv, magic, web3 } = props;
 
-    const header = () => <HeaderDropdown
-        env={env}
-        setEnv={setEnv}
-    />
+  const header = () => <HeaderDropdown
+    env={env}
+    setEnv={setEnv}
+  />
 
   return (
     <BottomTab.Navigator
@@ -77,17 +83,17 @@ function BottomTabNavigator(props: { navigation?: any; env?: any; setEnv?: any; 
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         })}
       >
-          {() => TabOneNavigator(header, magic, web3)}
+        {() => TabOneNavigator(header, magic, web3)}
       </BottomTab.Screen>
       <BottomTab.Screen
         name="Web3"
         options={{
           title: 'Web3',
-            headerShown: false,
+          headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       >
-          {() => TabTwoNavigator(header, web3, magic)}
+        {() => TabTwoNavigator(header, web3, magic)}
       </BottomTab.Screen>
     </BottomTab.Navigator>
   );
@@ -107,29 +113,29 @@ function TabBarIcon(props: {
 const TabOneStack = createNativeStackNavigator<TabOneParamList>();
 
 function TabOneNavigator(header: () => JSX.Element, magic: any, web3: any) {
-    return (
-        <TabOneStack.Navigator>
-            <TabOneStack.Screen
-                name="LoginScreen"
-                options={{ headerTitle: header }}
-            >
-                {props => <FirstScreen {...props} magic={magic} web3={web3} />}
-            </TabOneStack.Screen>
-        </TabOneStack.Navigator>
-    );
+  return (
+    <TabOneStack.Navigator>
+      <TabOneStack.Screen
+        name="LoginScreen"
+        options={{ headerTitle: header }}
+      >
+        {props => <LoginScreen {...props} magic={magic} web3={web3} />}
+      </TabOneStack.Screen>
+    </TabOneStack.Navigator>
+  );
 }
 
 const TabTwoStack = createNativeStackNavigator<TabTwoParamList>();
 
 function TabTwoNavigator(header: () => JSX.Element, web3: any, magic: any) {
-    return (
-        <TabTwoStack.Navigator>
-            <TabTwoStack.Screen
-                name="Web3Screen"
-                options={{ headerTitle: header }}
-            >
-                {(props: any) => <Web3Screen {...props} web3={web3} magic={magic} />}
-            </TabTwoStack.Screen>
-        </TabTwoStack.Navigator>
-    );
+  return (
+    <TabTwoStack.Navigator>
+      <TabTwoStack.Screen
+        name="Web3Screen"
+        options={{ headerTitle: header }}
+      >
+        {(props: any) => <Web3Screen {...props} web3={web3} magic={magic} />}
+      </TabTwoStack.Screen>
+    </TabTwoStack.Navigator>
+  );
 }
