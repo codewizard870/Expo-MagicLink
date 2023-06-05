@@ -14,6 +14,8 @@ declare global {
 }
 
 export type RootStackParamList = {
+
+
   FirstScreen: undefined;
   ChooseProfile: undefined;
   ChooseUsername: undefined;

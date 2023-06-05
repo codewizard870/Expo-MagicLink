@@ -9,6 +9,8 @@ import Web3 from 'web3'
 import { ENV, API_KEY } from './config/env';
 import { OAuthExtension } from "@magic-ext/react-native-expo-oauth";
 import { BitcoinExtension } from "@magic-ext/bitcoin";
+import { Provider } from 'react-redux';
+import { store } from './src/controller/store';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -18,8 +20,8 @@ export default function App() {
 
   const magic = new Magic(API_KEY[env], {
     extensions: [
-        new OAuthExtension(),
-        new BitcoinExtension({
+      new OAuthExtension(),
+      new BitcoinExtension({
         rpcUrl: 'BTC_RPC_NODE_URL',
         network: 'testnet' // testnet or mainnet
       })
@@ -39,11 +41,13 @@ export default function App() {
     return null;
   } else {
     return (
-      <SafeAreaProvider>
-        <magic.Relayer/>
-        <Navigation colorScheme={colorScheme} magicProps={magicProps} />
-        <StatusBar />
-      </SafeAreaProvider>
+      <Provider store={store}>
+        <SafeAreaProvider>
+          <magic.Relayer />
+          <Navigation colorScheme={colorScheme} magicProps={magicProps} />
+          <StatusBar />
+        </SafeAreaProvider>
+      </Provider>
     );
   }
 }

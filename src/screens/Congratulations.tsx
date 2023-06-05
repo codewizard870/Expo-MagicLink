@@ -23,9 +23,7 @@ import { FirstScreenProps } from '../utils/NavigationTypes';
 import { RootStackScreenProps } from '../../types';
 const size = new sizes(height, width);
 
-export default function Congratulations({ navigation }: RootStackScreenProps<'NotFound'>) {
-
-  // const Congratulations = () => {
+export default function Congratulations({ navigation }: RootStackScreenProps<'Congratulations'>) {
   let [isLoaded] = useFonts({
     'Outfit-Bold': fonts.OUTFIT_BOLD,
     'Outfit-Medium': fonts.OUTFIT_NORMAL,

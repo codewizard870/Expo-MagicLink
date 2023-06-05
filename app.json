@@ -5,7 +5,7 @@
     "scheme": "Townesquare",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/images/png/appLogo.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -22,6 +22,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.townesquare.townesqaure",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -29,6 +30,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fde1a842-16d1-47e7-a064-87974daf80de"
+      }
+    },
+    "packagerOpts": {
+      "config": "metro.config.js"
     }
   }
 }

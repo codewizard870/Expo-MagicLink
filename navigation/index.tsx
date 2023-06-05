@@ -18,8 +18,17 @@ import Web3Screen from '../screens/Web3Screen';
 import { RootStackParamList, RootTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import HeaderDropdown from "./HeaderDropdown";
+
 import FirstScreen from '../src/screens/FirstScreen';
 import Congratulations from '../src/screens/Congratulations';
+import ChooseProfile from '../src/screens/ChooseProfile';
+import ChooseUsername from '../src/screens/ChooseUsername';
+import ConnectSocialsAndVrify from '../src/screens/ConnectSocialsAndVrify';
+import ConnectSocials from '../src/screens/ConnectSocials';
+import FindFriends from '../src/screens/FindFriends';
+import ExploreCommunities from '../src/screens/ExploreCommunities';
+import ChooseProfilePics from '../src/screens/ChooseProfilePics';
+import EmailLogin from '../src/screens/EmailLogin';
 
 export default function Navigation({ colorScheme, magicProps }: { colorScheme: ColorSchemeName, magicProps: any }) {
   return (
@@ -43,7 +52,71 @@ function RootNavigator({ magicProps }: any) {
       <Stack.Screen name="FirstScreen" options={{ headerShown: false }} >
         {() => <FirstScreen {...magicProps} />}
       </Stack.Screen>
-      <Stack.Screen name="Congratulations" component={Congratulations}  options={{ headerShown: false }}/>
+
+      <Stack.Screen
+        name="ChooseProfile"
+        component={ChooseProfile}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChooseUsername"
+        component={ChooseUsername}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ConnectSocialsAndVrify"
+        component={ConnectSocialsAndVrify}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ConnectSocials"
+        component={ConnectSocials}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FindFriends"
+        component={FindFriends}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ExploreCommunities"
+        component={ExploreCommunities}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Congratulations"
+        component={Congratulations}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChooseProfilePics"
+        component={ChooseProfilePics}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="EmailLogin"
+        component={EmailLogin}
+        options={{
+          headerShown: false,
+        }}
+      />
 
       <Stack.Screen name="Root" options={{ headerShown: false }} >
         {() => BottomTabNavigator(magicProps)}
